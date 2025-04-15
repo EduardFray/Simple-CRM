@@ -5,6 +5,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { User } from '../../models/user.class';
 
 
 
@@ -24,5 +25,10 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 })
 export class DialogAddUserComponent {
 
+  user = new User();
+
+  saveUser(){
+    console.log('This is the actual user', this.user);
+  }
   
 }
