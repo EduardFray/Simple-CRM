@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AsyncPipe } from '@angular/common';
+import { Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +19,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatButtonModule,
     MatSidenavModule,
     RouterOutlet,
-    RouterLink],
+    RouterLink,
+  
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'simple-crm';
+  firestor: Firestore = inject(Firestore);
 }

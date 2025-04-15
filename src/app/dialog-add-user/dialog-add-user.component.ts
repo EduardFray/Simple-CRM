@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { User } from '../../models/user.class';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -18,6 +19,7 @@ import { User } from '../../models/user.class';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
@@ -26,8 +28,10 @@ import { User } from '../../models/user.class';
 export class DialogAddUserComponent {
 
   user = new User();
+  birthDate: Date = new Date();
 
   saveUser(){
+    this.user.birthDate = this.birthDate.getTime();
     console.log('This is the actual user', this.user);
   }
   
