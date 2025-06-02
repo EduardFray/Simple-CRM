@@ -6,7 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AsyncPipe } from '@angular/common';
-import { Firestore } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,12 +21,18 @@ import { Firestore } from '@angular/fire/firestore';
     MatSidenavModule,
     RouterOutlet,
     RouterLink,
-  
+    AsyncPipe
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'simple-crm';
-  firestor: Firestore = inject(Firestore);
+  firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;
+
+  constructor() {
+    const aCollection = collection(this.firestore, 'items')
+    this.items$ = collectionData(aCollection);
+  }
 }
