@@ -9,6 +9,9 @@ import { User } from '../../models/user.class';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AsyncPipe } from '@angular/common';
 import { Firestore, addDoc, collection, collectionData, } from '@angular/fire/firestore';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CommonModule } from '@angular/common';
+
 
 
 
@@ -22,7 +25,8 @@ import { Firestore, addDoc, collection, collectionData, } from '@angular/fire/fi
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    AsyncPipe
+    MatProgressBarModule,
+    CommonModule
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
@@ -32,18 +36,22 @@ export class DialogAddUserComponent {
   firestore: Firestore = inject(Firestore);
   user = new User();
   birthDate: Date = new Date();
+  loading = false;
 
   async saveUser() {
     this.user.birthDate = this.birthDate.getTime();
     console.log('This is the actual user', this.user);
 
     const userCollection = collection(this.firestore, 'user')
+    this.loading = true;
 
     try {
       await addDoc(userCollection, this.user.toJSON());
       console.log('User added successfully!');
     } catch (error) {
       console.error('Error adding user: ', error);
+    } finally {
+      this.loading = false; 
     }
   }
 
