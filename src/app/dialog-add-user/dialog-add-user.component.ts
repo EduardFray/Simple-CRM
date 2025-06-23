@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -26,13 +26,14 @@ import { CommonModule } from '@angular/common';
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './dialog-add-user.component.html',
   styleUrl: './dialog-add-user.component.scss'
 })
 export class DialogAddUserComponent {
+
   firestore: Firestore = inject(Firestore);
   user = new User();
   birthDate: Date = new Date();
@@ -51,8 +52,7 @@ export class DialogAddUserComponent {
     } catch (error) {
       console.error('Error adding user: ', error);
     } finally {
-      this.loading = false; 
+      this.loading = false;
     }
   }
-
 }

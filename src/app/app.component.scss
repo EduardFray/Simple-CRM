@@ -18,7 +18,15 @@
     align-items: center;
     padding-left: 16px;
     padding-right: 16px;
+    position: relative;
 
+    img {
+        position: absolute;
+        object-fit: contain;
+        height: 135px;
+        width: 135px;
+        top: -30;
+    }
 }
 
 .toolbar-menu {
@@ -48,5 +56,6 @@
 
 .router-container {
     padding-left: 56px;
+    padding-right: 56px;
     padding-top: 16px;
 }
