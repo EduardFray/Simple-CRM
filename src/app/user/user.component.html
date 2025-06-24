@@ -7,15 +7,10 @@
             <th>E-Mail</th>
             <th>City</th>
         </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Peters</td>
-            <td>Is Okay</td>
-        </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Peters MAil</td>
-            <td>Is Okay</td>
+        <tr *ngFor="let user of allUsers">
+            <td>{{ user.firstName }} {{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.city}}</td>
         </tr>
     </table>
 </mat-card>
