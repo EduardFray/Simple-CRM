@@ -9,6 +9,7 @@ import { User } from '../../models/user.class';
 import { MatCardModule } from '@angular/material/card';
 import { Firestore, collection, collectionData, } from '@angular/fire/firestore';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 
@@ -31,10 +32,11 @@ export class UserComponent implements OnInit {
   user = new User();
   allUsers: User[] = [];
   dialog = inject(MatDialog);
+  router = inject(Router);
 
   ngOnInit() {
     const userCollection = collection(this.firestore, 'user');
-    collectionData(userCollection).subscribe((changes: any) => {
+    collectionData(userCollection, {idField: 'id'}).subscribe((changes: any) => {
       console.log('Received changes from DB', changes);
       this.allUsers = changes;
     })
@@ -44,4 +46,7 @@ export class UserComponent implements OnInit {
     this.dialog.open(DialogAddUserComponent);
   }
 
+  goToUser(userID: string){
+    this.router.navigate(['/user', userID]);
+  }
 }
