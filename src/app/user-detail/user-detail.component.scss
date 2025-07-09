@@ -25,7 +25,31 @@
 }
 
 .card-design {
-    height: 400px;
+    height: 250px;
     background-color: rgba(253, 111, 111, 1);
     position: relative;
+}
+
+
+.vert-dots {
+    position: absolute;
+    right: 0;
+    top: 16px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+
+    >mat-icon {
+        font-size: 2rem;
+        height: 2rem;
+        width: 2rem;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.color-white {
+    color: white;
 }

@@ -19,6 +19,7 @@
     padding-left: 16px;
     padding-right: 16px;
     position: relative;
+    padding-top: 16px;
 
     img {
         position: absolute;
@@ -36,7 +37,7 @@
 
 .menu-items {
     list-style: none;
-    padding: 0;
+    padding: 24px;
     margin: 0;
 
     >li {

@@ -1,5 +1,12 @@
 <mat-card class="card-design" appearance="outlined">
 
+    <button matIconButton mat-button="basic" [matMenuTriggerFor]="userMenu" class="vert-dots">
+        <mat-icon class="color-white">more_vert</mat-icon>
+    </button>
+    <mat-menu #userMenu="matMenu">
+        <button mat-menu-item (click)="editUserDetail()">Edit</button>
+    </mat-menu>
+
     <div class="avatar-design">
         <img src="./assets/img/avatar.png" alt="">
         <div>
@@ -9,7 +16,15 @@
     </div>
 </mat-card>
 
-<mat-card class="mt-32">
+<mat-card class="mt-32 detail-card">
+    <button matIconButton mat-button="basic" [matMenuTriggerFor]="menu" class="vert-dots">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editAddress()">Edit</button>
+        <button mat-menu-item>Delete</button>
+    </mat-menu>
+
     <mat-card-header>
         <mat-card-title>Address</mat-card-title>
     </mat-card-header>
