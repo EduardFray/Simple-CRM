@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     const userCollection = collection(this.firestore, 'user');
-    collectionData(userCollection, {idField: 'id'}).subscribe((changes: any) => {
+    collectionData(userCollection, { idField: 'id' }).subscribe((changes: any) => {
       console.log('Received changes from DB', changes);
       this.allUsers = changes;
     })
@@ -46,7 +46,7 @@ export class UserComponent implements OnInit {
     this.dialog.open(DialogAddUserComponent);
   }
 
-  goToUser(userID: string){
+  goToUser(userID: string) {
     this.router.navigate(['/user', userID]);
   }
 }
