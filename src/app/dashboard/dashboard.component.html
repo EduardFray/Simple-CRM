@@ -1,1 +1,25 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+    <mat-card class="card-width cursor" appearance="raised" (click)="openUser()">
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>Customers</mat-card-title>
+                <mat-icon fontIcon="person" class="icon-display"></mat-icon>
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            {{ (allUsers$ | async)?.length ?? 0 }}
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card-width" appearance="raised">
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>Heutiges Datum</mat-card-title>
+                <mat-icon fontIcon="event" class="icon-display"></mat-icon>
+            </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+            {{ currentDate }}
+        </mat-card-content>
+    </mat-card>
+</div>
